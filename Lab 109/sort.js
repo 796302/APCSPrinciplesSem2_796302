@@ -6,10 +6,11 @@ function setup(){
      array[i] = random(10);
 
    }
-   sort(array);
+
+   selectionSort(array);
    console.log(array);
 }
-function sort(array){
+function selectionSort(array){
   for (var i = 0; i < array.length-1; i++){
     var Smallsub = i;
     for(var j = i + 1; j < array.length-1; i++){
@@ -23,3 +24,16 @@ function sort(array){
     temp = array[Smallsub]
   }
 }
+
+/*function insertionSort(array){
+  for(var i = 1; i < array.length; i++){
+    for(var j = i; j > 0; i--){
+      if(array[i] < array[i-1]){
+        var temp = array[i]
+        array[i] = array[i-1]
+        temp = array[i-1]
+      }
+    }
+  }
+}
+*/
