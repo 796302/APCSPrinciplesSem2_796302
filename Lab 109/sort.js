@@ -10,8 +10,9 @@ function setup(){
    sort(array);
    console.log(array);
 }
-----------Selection Sort----------------
-/*function sort(array){
+//-------Selection Sort----------
+/*
+function sort(array){
   for (var i = 0; i < array.length-1; i++){
     var Smallsub = i;
     for(var j = i + 1; j < array.length-1; i++){
@@ -26,7 +27,7 @@ function setup(){
   }
 }
 */
-----------Insertion Sort-----------------
+//-------Insertion Sort-----------
 /*
 function sort(array){
   for(var i = 1; i < array.length; i++){
