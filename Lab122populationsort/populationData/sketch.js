@@ -1,15 +1,15 @@
 var data;
 function setup(){
-  loadJSON("data.json", gotData)
+  sort(data.countrydata);
+  console.log(data.countrydata);
 }
-function gotData(jData){
-  data = jData;
+function preload(){
+  data = loadJSON("population.json");
 }
 
-sort(data.countrydata)
-console.log(data.countrydata);
 
-function sort(data.countrydata){
+
+function sort(array){
   for (var i = array.length-1; i > 0; i--){
     for(var j = 1; i <= i; i++){
     if([j-1] > [j]){
