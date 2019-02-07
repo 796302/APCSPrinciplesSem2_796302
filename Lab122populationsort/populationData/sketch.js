@@ -1,13 +1,15 @@
 var data;
 function setup(){
-  sort(data.countrydata);
-  console.log(data.countrydata);
+  sort(data);
+  console.log(data);
 }
 function preload(){
-  data = loadJSON("population.json");
+  data = loadJSON("data.json");
 }
 
+function draw(){
 
+}
 
 function sort(array){
   for (var i = array.length-1; i > 0; i--){
