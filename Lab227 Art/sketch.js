@@ -1,10 +1,8 @@
 //  Global variables
-var balls = [];
-// var redBall;
+var Balls = [];
+var redBall;
 var toggle;
-var xval = [];
-var yval = [];
-var mouse;
+
 // put setup code here
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -17,9 +15,9 @@ function setup() {
 function draw() {
   if(!toggle){
   background(255, 255, 255, 25);
-  // redBall.run();
-  for(var i = 0; i < balls.length; i++){
-    balls[i].run();
+  redBall.run();
+  for(var i = 0; i < Balls.length; i++){
+    Balls[i].run();
 
 
   }
@@ -32,15 +30,14 @@ function loadBalls(numBalls){
     var velocity = createVector(random(1.5,2), random(1.5,2));
     var r = random(20,40);
     var col = color(255, 255, 255);
-    balls.push(new Ball(location, velocity, r, col));
+    Balls.push(new Ball(location, velocity, r, col));
   }
-var location = (mouseX, mouseY);
-tMouse = new mouse(location);
-  // var location = createVector(width/2, height/2);
-  // var velocity = createVector(0,0);
-  // var r = 0;
-  // var col = color(255, 0, 0);
-  // redBall = new Ball(location, velocity, r, col);
+
+  var location = createVector(width/2, height/2);
+  var velocity = createVector(0,0);
+  var r = 0;
+  var col = color(255, 0, 0);
+  redBall = new Ball(location, velocity, r, col);
 }
 function mousePressed(){
   toggle = !toggle;

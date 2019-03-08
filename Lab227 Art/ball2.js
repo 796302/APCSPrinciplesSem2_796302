@@ -1,58 +1,43 @@
-function Ball(location, velocity, radius, col){
-  this.loc = location;
-  this.vel = velocity;
-  this.rad = radius;
+function Ball(loc, rad, col, id, acc){
+  // Instance variables
+  this.loc = loc;
+  this.vel = createVector(random(-1.0, 1.0),  random(-1.0, 1.0));
+  this.rad = rad;
+  this.id = id;
+  this.acc = acc;
   this.col = col;
-  this.acc = createVector(0, 0.5);
-
+  // This function calls other functions
   this.run = function (){
     this.checkEdges();
     this.update();
     this.render();
   }
-
-
+  // This function changes the location of the ball
+  // by adding speed to x and y
   this.update = function(){
-    if(this !== tMouse){
-      var d = this.loc.dist(tMouse.loc);
-      if(d > 1){
-        var steeringForce = p5.Vector.sub(mouseX, mouseY, this.loc);
-        steeringForce.normalize();
-        steeringForce.mult(.5);
-        this.vel.add(steeringForce);
-
-      }
-      // if(d < 200){
-      //   var steeringForce = p5.Vector.sub(this.loc, redBall.loc);
-      //   steeringForce.normalize();
-      //   steeringForce.mult(.7);
-      //   this.vel.add(steeringForce);
-      // }
-      this.loc.add(this.vel);
-
-    }
-
+    this.vel.add(this.acc);
+	  this.loc.add(this.vel);
   }
+  //checkEdges() reverses speed when the ball touches an edge
   this.checkEdges = function(){
     if(this.loc.x < 0) this.vel.x = -this.vel.x;
     if(this.loc.x > width) this.vel.x = -this.vel.x;
     if(this.loc.y < 0) this.vel.y = -this.vel.y;
     if(this.loc.y > height) this.vel.y = -this.vel.y;
   }
-
+  // render() draws the ball at the new location
   this.render = function(){
-    // fill(this.col);
-    // ellipse(this.loc.x, this.loc.y, this.rad, this.rad);
-    var centerVec = createVector(width/2, height/2);
-    var dist = this.loc.dist(centerVec);
-    var clrR = map(dist, 0, 100, 30, 50)
-    var clrG = map(dist, 0, 100, 0 , 188)
-    var clrB = map(dist, 0, 100, 20 , 60)
-    stroke(clrR, clrG, clrB, 150);
-    strokeWeight(13);
-    // line(this.loc.x, this.loc.y, redBall.loc.x, redBall.loc.y);
-
-    arc(this.loc.x,this.loc.y,2,50,50,2*Math.PI);
-
+    stroke(133, 180, 60);
+    for(id = Balls[id]; id > Balls.length-1; id++) {
+    if (id < Balls.length-1){
+      line(this.loc.x, this.loc.y, Balls[id+1].loc.x, Balls[id+1].loc.y, 125);
+    }
+    else{
+      line(this.loc.x, this.loc.y, Balls[0].loc.x, Balls[0].loc.y, 125);
+    }
+    fill(255);
+    noStroke();
+    ellipse(this.loc.x, this.loc.y, 0, 0);
+}
   }
-}//  end of constructor
+}
