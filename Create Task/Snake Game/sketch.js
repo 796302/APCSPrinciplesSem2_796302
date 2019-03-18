@@ -38,6 +38,7 @@ function draw(){
   checkLoc();
   deadGame();
   gameStart();
+  checkFood();
 }
 //eat the food
 function checkLoc(){
@@ -51,6 +52,19 @@ function checkLoc(){
       console.log(snake.segments.length)
       score++;
     }
+  }
+}
+//create wall around Food
+function checkFood(){
+  for(var i = 0; i < food.length; i ++){
+    var distX = food[i].loc.x
+    var distY = food[i].loc.y
+    fill(255, 255, 255)
+    rect(distX + 20, distY + 20, 20, 20);
+    rect(distX + 20, distY - 20, 20, 20);
+    rect(distX - 20, distY + 20, 20, 20);
+    rect(distX - 20, distY - 20, 20, 20);
+
   }
 }
 //creates snake
@@ -73,6 +87,7 @@ function loadFood(numFood){
     food.push(f);
   }
 }
+
 //movement for keys when pressed
 function keyPressed(){
    start = "false"
