@@ -54,19 +54,7 @@ function checkLoc(){
     }
   }
 }
-//create wall around Food
-function checkFood(){
-  for(var i = 0; i < food.length; i ++){
-    var distX = food[i].loc.x
-    var distY = food[i].loc.y
-    fill(255, 255, 255)
-    rect(distX + 20, distY + 20, 20, 20);
-    rect(distX + 20, distY - 20, 20, 20);
-    rect(distX - 20, distY + 20, 20, 20);
-    rect(distX - 20, distY - 20, 20, 20);
 
-  }
-}
 //creates snake
 function loadSnake(){
   var loc = createVector(200, 200);
@@ -141,5 +129,33 @@ function gameStart(){
     textSize(50);
     text("Snake Game", 400, 350)
     text("Press any key to start", 400, 425)
+  }
+}
+
+//create wall around Food
+function checkFood(){
+  for(var i = 0; i < food.length; i ++){
+    var distX = food[i].loc.x
+    var distY = food[i].loc.y
+    fill(255, 255, 255)
+    rect(distX + 20, distY + 20, 20, 20);
+    rect(distX + 20, distY - 20, 20, 20);
+    rect(distX - 20, distY + 20, 20, 20);
+    rect(distX - 20, distY - 20, 20, 20);
+
+    }
+    if((distX + 20 == snake.loc.x) && (distY + 20 == snake.loc.y) ||
+       (distX + 20 == snake.loc.x) && (distY - 20 == snake.loc.y) ||
+       (distX - 20 == snake.loc.x) && (distY + 20 == snake.loc.y) ||
+       (distX - 20 == snake.loc.x) && (distY - 20 == snake.loc.y)){
+
+         textFont()
+           fill(255, 255, 255);
+           rect(125, 275, 550, 200);
+           fill(0, 0, 0);
+           textAlign(CENTER);
+           textSize(50);
+           text("You Lose", 400, 350)
+           text("Press w to restart", 400, 425)
   }
 }
