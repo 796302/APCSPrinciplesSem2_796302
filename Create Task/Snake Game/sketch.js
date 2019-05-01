@@ -113,6 +113,7 @@ function deadGame(){
       snake = 0
       loadSnake();
       gameStart();
+      checkFood();
       score = 0;
 
     }
@@ -142,20 +143,31 @@ function checkFood(){
     rect(distX + 20, distY - 20, 20, 20);
     rect(distX - 20, distY + 20, 20, 20);
     rect(distX - 20, distY - 20, 20, 20);
+if((food[i].loc.x + 20 == snake.loc.x) && (food[i].loc.y + 20 == snake.loc.y) ||
+(food[i].loc.x + 20 == snake.loc.x) && (food[i].loc.y - 20 == snake.loc.y) ||
+(food[i].loc.x - 20 == snake.loc.x) && (food[i].loc.y + 20 == snake.loc.y) ||
+(food[i].loc.x - 20 == snake.loc.x) && (food[i].loc.y - 20 == snake.loc.y)){
+  if(snake.status == "false"){
+    textFont()
+      fill(255, 255, 255);
+      rect(125, 275, 550, 200);
+      fill(0, 0, 0);
+      textAlign(CENTER);
+      textSize(50);
+      text("You Lose", 400, 350)
+      text("Press w to restart", 400, 425)
+
+//w to restart game
+    if(keyCode === 87){
+      snake = 0
+      loadSnake();
+      gameStart();
+      checkFood();
+      score = 0;
 
     }
-    if((distX + 20 == snake.loc.x) && (distY + 20 == snake.loc.y) ||
-       (distX + 20 == snake.loc.x) && (distY - 20 == snake.loc.y) ||
-       (distX - 20 == snake.loc.x) && (distY + 20 == snake.loc.y) ||
-       (distX - 20 == snake.loc.x) && (distY - 20 == snake.loc.y)){
-
-         textFont()
-           fill(255, 255, 255);
-           rect(125, 275, 550, 200);
-           fill(0, 0, 0);
-           textAlign(CENTER);
-           textSize(50);
-           text("You Lose", 400, 350)
-           text("Press w to restart", 400, 425)
   }
-}
+
+      }
+    }
+  }
